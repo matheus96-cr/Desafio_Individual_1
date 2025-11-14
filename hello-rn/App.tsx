@@ -8,8 +8,6 @@ import {
   Image // Importado para exibir a imagem do personagem
 } from 'react-native';
 
-// 1. Definição das Interfaces (Tipagem)
-// A tipagem é mais complexa aqui, para refletir a estrutura da API
 interface Character {
   id: number;
   name: string;
@@ -18,10 +16,9 @@ interface Character {
   image: string; // URL da imagem
 }
 
-// A API retorna um objeto que contém a lista de personagens em 'results'
 interface ApiResponse {
   results: Character[];
-  // Há outros campos como 'info' (metadados de paginação), mas focaremos em 'results'
+
 }
 
 const API_URL = 'https://rickandmortyapi.com/api/character';
@@ -33,7 +30,7 @@ const RickAndMortyApp: React.FC = () => {
   // Estado para controlar o carregamento
   const [loading, setLoading] = useState<boolean>(true);
 
-  // 2. Função de Efeito (Data Fetching)
+
   useEffect(() => {
     const fetchCharacters = async () => {
       try {
@@ -53,7 +50,6 @@ const RickAndMortyApp: React.FC = () => {
     fetchCharacters();
   }, []);
 
-  // 3. Renderização do Estado de Carregamento
   if (loading) {
     return (
       <View style={styles.container}>
@@ -63,7 +59,7 @@ const RickAndMortyApp: React.FC = () => {
     );
   }
 
-  // 4. Renderização dos Dados com Imagem
+ 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Personagens de Rick and Morty</Text>
@@ -99,7 +95,7 @@ const RickAndMortyApp: React.FC = () => {
   );
 };
 
-// 5. Estilos Atualizados
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
